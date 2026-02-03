@@ -1,0 +1,1817 @@
+{
+  "UserDetailList": [
+    {
+      "Path": "/",
+      "UserName": "admin-jsmith",
+      "UserId": "AIDAEXAMPLE1111111111",
+      "Arn": "arn:aws:iam::123456789012:user/admin-jsmith",
+      "CreateDate": "2023-01-15T09:30:00Z",
+      "UserPolicyList": [
+        {
+          "PolicyName": "InlineKMSAdminPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSFullAdmin",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ],
+      "GroupList": [
+        "Admins"
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Department",
+          "Value": "IT"
+        },
+        {
+          "Key": "CostCenter",
+          "Value": "CC-001"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "dev-mjohnson",
+      "UserId": "AIDAEXAMPLE2222222222",
+      "Arn": "arn:aws:iam::123456789012:user/dev-mjohnson",
+      "CreateDate": "2023-03-22T14:15:00Z",
+      "UserPolicyList": [],
+      "GroupList": [
+        "Developers"
+      ],
+      "AttachedManagedPolicies": [],
+      "Tags": [
+        {
+          "Key": "Department",
+          "Value": "Engineering"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "analyst-kwilliams",
+      "UserId": "AIDAEXAMPLE3333333333",
+      "Arn": "arn:aws:iam::123456789012:user/analyst-kwilliams",
+      "CreateDate": "2023-05-10T11:00:00Z",
+      "UserPolicyList": [],
+      "GroupList": [
+        "ReadOnly"
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "ReadOnlyAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Department",
+          "Value": "Finance"
+        }
+      ]
+    },
+    {
+      "Path": "/service-accounts/",
+      "UserName": "svc-data-pipeline",
+      "UserId": "AIDAEXAMPLE4444444444",
+      "Arn": "arn:aws:iam::123456789012:user/service-accounts/svc-data-pipeline",
+      "CreateDate": "2023-06-01T08:00:00Z",
+      "UserPolicyList": [
+        {
+          "PolicyName": "DataPipelineInlinePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "S3DataAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject",
+                  "s3:ListBucket"
+                ],
+                "Resource": [
+                  "arn:aws:s3:::company-data-lake",
+                  "arn:aws:s3:::company-data-lake/*"
+                ]
+              },
+              {
+                "Sid": "KMSDecryptForData",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt",
+                  "kms:GenerateDataKey"
+                ],
+                "Resource": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0"
+              }
+            ]
+          }
+        }
+      ],
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "Tags": [
+        {
+          "Key": "ServiceAccount",
+          "Value": "true"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "security-admin-tbrown",
+      "UserId": "AIDAEXAMPLE5555555555",
+      "Arn": "arn:aws:iam::123456789012:user/security-admin-tbrown",
+      "CreateDate": "2022-11-20T16:45:00Z",
+      "UserPolicyList": [],
+      "GroupList": [
+        "Admins",
+        "SecurityTeam"
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "IAMFullAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/IAMFullAccess"
+        },
+        {
+          "PolicyName": "CustomKMSAdminPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/CustomKMSAdminPolicy"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Department",
+          "Value": "Security"
+        },
+        {
+          "Key": "ClearanceLevel",
+          "Value": "High"
+        }
+      ]
+    },
+    {
+      "Path": "/contractors/",
+      "UserName": "contractor-agarcia",
+      "UserId": "AIDAEXAMPLE6666666666",
+      "Arn": "arn:aws:iam::123456789012:user/contractors/contractor-agarcia",
+      "CreateDate": "2024-01-08T10:30:00Z",
+      "UserPolicyList": [
+        {
+          "PolicyName": "ContractorLimitedAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "LimitedEC2Access",
+                "Effect": "Allow",
+                "Action": [
+                  "ec2:Describe*",
+                  "ec2:StartInstances",
+                  "ec2:StopInstances"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "StringEquals": {
+                    "ec2:ResourceTag/Environment": "Development"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "GroupList": [
+        "Developers"
+      ],
+      "AttachedManagedPolicies": [],
+      "Tags": [
+        {
+          "Key": "EmployeeType",
+          "Value": "Contractor"
+        },
+        {
+          "Key": "ContractEnd",
+          "Value": "2024-12-31"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "ops-engineer-rlee",
+      "UserId": "AIDAEXAMPLE7777777777",
+      "Arn": "arn:aws:iam::123456789012:user/ops-engineer-rlee",
+      "CreateDate": "2023-08-15T13:20:00Z",
+      "UserPolicyList": [],
+      "GroupList": [
+        "Developers"
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "PowerUserAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/PowerUserAccess"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Department",
+          "Value": "Operations"
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "Path": "/",
+      "GroupName": "Admins",
+      "GroupId": "AGPAEXAMPLE1111111111",
+      "Arn": "arn:aws:iam::123456789012:group/Admins",
+      "CreateDate": "2022-06-01T08:00:00Z",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "AdminEmergencyAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "EmergencyBreakGlass",
+                "Effect": "Allow",
+                "Action": "*",
+                "Resource": "*",
+                "Condition": {
+                  "Bool": {
+                    "aws:MultiFactorAuthPresent": "true"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "GroupName": "Developers",
+      "GroupId": "AGPAEXAMPLE2222222222",
+      "Arn": "arn:aws:iam::123456789012:group/Developers",
+      "CreateDate": "2022-06-01T08:05:00Z",
+      "GroupPolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "DeveloperPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/DeveloperPolicy"
+        },
+        {
+          "PolicyName": "AmazonS3ReadOnlyAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "GroupName": "ReadOnly",
+      "GroupId": "AGPAEXAMPLE3333333333",
+      "Arn": "arn:aws:iam::123456789012:group/ReadOnly",
+      "CreateDate": "2022-06-01T08:10:00Z",
+      "GroupPolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "ReadOnlyAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
+        },
+        {
+          "PolicyName": "KMSReadOnlyPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/KMSReadOnlyPolicy"
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "GroupName": "SecurityTeam",
+      "GroupId": "AGPAEXAMPLE4444444444",
+      "Arn": "arn:aws:iam::123456789012:group/SecurityTeam",
+      "CreateDate": "2022-07-15T10:00:00Z",
+      "GroupPolicyList": [
+        {
+          "PolicyName": "SecurityAuditInline",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "SecurityAuditAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "cloudtrail:*",
+                  "guardduty:*",
+                  "securityhub:*",
+                  "inspector:*",
+                  "access-analyzer:*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "SecurityAudit",
+          "PolicyArn": "arn:aws:iam::aws:policy/SecurityAudit"
+        },
+        {
+          "PolicyName": "CustomKMSAdminPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/CustomKMSAdminPolicy"
+        }
+      ]
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "Path": "/",
+      "RoleName": "EC2-Instance-Role",
+      "RoleId": "AROAEXAMPLE1111111111",
+      "Arn": "arn:aws:iam::123456789012:role/EC2-Instance-Role",
+      "CreateDate": "2023-02-10T09:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "InstanceProfileList": [
+        {
+          "Path": "/",
+          "InstanceProfileName": "EC2-Instance-Profile",
+          "InstanceProfileId": "AIPAEXAMPLE1111111111",
+          "Arn": "arn:aws:iam::123456789012:instance-profile/EC2-Instance-Profile",
+          "CreateDate": "2023-02-10T09:00:00Z",
+          "Roles": [
+            {
+              "Path": "/",
+              "RoleName": "EC2-Instance-Role",
+              "RoleId": "AROAEXAMPLE1111111111",
+              "Arn": "arn:aws:iam::123456789012:role/EC2-Instance-Role",
+              "CreateDate": "2023-02-10T09:00:00Z",
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "RolePolicyList": [
+        {
+          "PolicyName": "EC2SSMInlinePolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "SSMAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "ssm:GetParameter",
+                  "ssm:GetParameters",
+                  "ssm:GetParametersByPath"
+                ],
+                "Resource": "arn:aws:ssm:us-east-1:123456789012:parameter/app/*"
+              },
+              {
+                "Sid": "KMSDecryptForSSM",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt"
+                ],
+                "Resource": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0"
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AmazonSSMManagedInstanceCore",
+          "PolicyArn": "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Environment",
+          "Value": "Production"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-20T15:30:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/service-role/",
+      "RoleName": "Lambda-DataProcessor-Role",
+      "RoleId": "AROAEXAMPLE2222222222",
+      "Arn": "arn:aws:iam::123456789012:role/service-role/Lambda-DataProcessor-Role",
+      "CreateDate": "2023-04-05T11:30:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "LambdaExcessiveKMSPolicy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "OverlyPermissiveKMS",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:*"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Sid": "S3BucketAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": [
+                  "arn:aws:s3:::company-data-lake",
+                  "arn:aws:s3:::company-data-lake/*"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AWSLambdaBasicExecutionRole",
+          "PolicyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Application",
+          "Value": "DataProcessor"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-21T08:45:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "CrossAccount-Audit-Role",
+      "RoleId": "AROAEXAMPLE3333333333",
+      "Arn": "arn:aws:iam::123456789012:role/CrossAccount-Audit-Role",
+      "CreateDate": "2023-05-20T14:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::987654321098:root"
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+              "StringEquals": {
+                "sts:ExternalId": "audit-external-id-12345"
+              },
+              "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "SecurityAudit",
+          "PolicyArn": "arn:aws:iam::aws:policy/SecurityAudit"
+        },
+        {
+          "PolicyName": "KMSReadOnlyPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/KMSReadOnlyPolicy"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Purpose",
+          "Value": "CrossAccountAudit"
+        },
+        {
+          "Key": "TrustedAccount",
+          "Value": "987654321098"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-15T10:00:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "CrossAccount-KMS-Admin-Role",
+      "RoleId": "AROAEXAMPLE4444444444",
+      "Arn": "arn:aws:iam::123456789012:role/CrossAccount-KMS-Admin-Role",
+      "CreateDate": "2023-06-15T16:30:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": [
+                "arn:aws:iam::111122223333:role/RemoteAdmin",
+                "arn:aws:iam::444455556666:user/trusted-admin"
+              ]
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+              "IpAddress": {
+                "aws:SourceIp": [
+                  "10.0.0.0/8",
+                  "192.168.1.0/24"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "CustomKMSAdminPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/CustomKMSAdminPolicy"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Purpose",
+          "Value": "CrossAccountKMSAdmin"
+        },
+        {
+          "Key": "RiskLevel",
+          "Value": "High"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-10T11:20:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "SAML-Federated-Admin-Role",
+      "RoleId": "AROAEXAMPLE5555555555",
+      "Arn": "arn:aws:iam::123456789012:role/SAML-Federated-Admin-Role",
+      "CreateDate": "2023-01-10T10:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:aws:iam::123456789012:saml-provider/OktaProvider"
+            },
+            "Action": "sts:AssumeRoleWithSAML",
+            "Condition": {
+              "StringEquals": {
+                "SAML:aud": "https://signin.aws.amazon.com/saml"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "FederationType",
+          "Value": "SAML"
+        },
+        {
+          "Key": "IdentityProvider",
+          "Value": "Okta"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-21T09:15:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "SAML-Federated-Developer-Role",
+      "RoleId": "AROAEXAMPLE6666666666",
+      "Arn": "arn:aws:iam::123456789012:role/SAML-Federated-Developer-Role",
+      "CreateDate": "2023-01-10T10:15:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:aws:iam::123456789012:saml-provider/OktaProvider"
+            },
+            "Action": "sts:AssumeRoleWithSAML",
+            "Condition": {
+              "StringEquals": {
+                "SAML:aud": "https://signin.aws.amazon.com/saml"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "FederatedDevKMSAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSEncryptDecrypt",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Encrypt",
+                  "kms:Decrypt",
+                  "kms:ReEncrypt*",
+                  "kms:GenerateDataKey*",
+                  "kms:DescribeKey"
+                ],
+                "Resource": [
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0",
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-abcdef1234567890a"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "DeveloperPolicy",
+          "PolicyArn": "arn:aws:iam::123456789012:policy/DeveloperPolicy"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "FederationType",
+          "Value": "SAML"
+        },
+        {
+          "Key": "IdentityProvider",
+          "Value": "Okta"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-21T11:30:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "BusinessHours-KMS-Role",
+      "RoleId": "AROAEXAMPLE7777777777",
+      "Arn": "arn:aws:iam::123456789012:role/BusinessHours-KMS-Role",
+      "CreateDate": "2023-07-01T08:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::123456789012:root"
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+              "DateGreaterThan": {
+                "aws:CurrentTime": "2024-01-01T08:00:00Z"
+              },
+              "DateLessThan": {
+                "aws:CurrentTime": "2025-12-31T18:00:00Z"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "TimeRestrictedKMSAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "BusinessHoursKMSAdmin",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:CreateKey",
+                  "kms:ScheduleKeyDeletion",
+                  "kms:CancelKeyDeletion",
+                  "kms:EnableKey",
+                  "kms:DisableKey",
+                  "kms:PutKeyPolicy",
+                  "kms:CreateAlias",
+                  "kms:DeleteAlias",
+                  "kms:UpdateAlias"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "DateGreaterThan": {
+                    "aws:CurrentTime": "2024-01-01T09:00:00Z"
+                  },
+                  "DateLessThan": {
+                    "aws:CurrentTime": "2024-12-31T17:00:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [],
+      "Tags": [
+        {
+          "Key": "AccessWindow",
+          "Value": "BusinessHours"
+        },
+        {
+          "Key": "TimeZone",
+          "Value": "UTC"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-19T14:00:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/aws-service-role/",
+      "RoleName": "AWSServiceRoleForConfig",
+      "RoleId": "AROAEXAMPLE8888888888",
+      "Arn": "arn:aws:iam::123456789012:role/aws-service-role/AWSServiceRoleForConfig",
+      "CreateDate": "2022-01-15T12:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "config.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AWSConfigServiceRolePolicy",
+          "PolicyArn": "arn:aws:iam::aws:policy/aws-service-role/AWSConfigServiceRolePolicy"
+        }
+      ],
+      "Tags": [],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-21T12:00:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "EKS-Pod-Execution-Role",
+      "RoleId": "AROAEXAMPLE9999999999",
+      "Arn": "arn:aws:iam::123456789012:role/EKS-Pod-Execution-Role",
+      "CreateDate": "2023-09-10T10:30:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+              "StringEquals": {
+                "oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:sub": "system:serviceaccount:default:my-service-account",
+                "oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:aud": "sts.amazonaws.com"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "EKSPodSecretsAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "SecretsManagerAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue",
+                  "secretsmanager:DescribeSecret"
+                ],
+                "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:app/*"
+              },
+              {
+                "Sid": "KMSDecryptSecrets",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt",
+                  "kms:DescribeKey"
+                ],
+                "Resource": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0"
+              }
+            ]
+          }
+        }
+      ],
+      "AttachedManagedPolicies": [],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/my-cluster",
+          "Value": "owned"
+        },
+        {
+          "Key": "Application",
+          "Value": "EKSPods"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2024-01-21T16:45:00Z",
+        "Region": "us-east-1"
+      }
+    },
+    {
+      "Path": "/",
+      "RoleName": "Emergency-Break-Glass-Role",
+      "RoleId": "AROAEXAMPLEAAAAAAAAAA",
+      "Arn": "arn:aws:iam::123456789012:role/Emergency-Break-Glass-Role",
+      "CreateDate": "2022-06-01T08:00:00Z",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::123456789012:root"
+            },
+            "Action": "sts:AssumeRole",
+            "Condition": {
+              "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+              },
+              "IpAddress": {
+                "aws:SourceIp": "203.0.113.0/24"
+              },
+              "StringEquals": {
+                "aws:PrincipalTag/Department": "Security"
+              }
+            }
+          }
+        ]
+      },
+      "InstanceProfileList": [],
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Purpose",
+          "Value": "EmergencyAccess"
+        },
+        {
+          "Key": "RiskLevel",
+          "Value": "Critical"
+        },
+        {
+          "Key": "ApprovalRequired",
+          "Value": "true"
+        }
+      ],
+      "RoleLastUsed": {
+        "LastUsedDate": "2023-11-15T22:30:00Z",
+        "Region": "us-east-1"
+      }
+    }
+  ],
+  "Policies": [
+    {
+      "PolicyName": "CustomKMSAdminPolicy",
+      "PolicyId": "ANPAEXAMPLE1111111111",
+      "Arn": "arn:aws:iam::123456789012:policy/CustomKMSAdminPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v3",
+      "AttachmentCount": 3,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Custom policy for KMS administrative actions",
+      "CreateDate": "2023-01-15T10:00:00Z",
+      "UpdateDate": "2024-01-05T14:30:00Z",
+      "Tags": [
+        {
+          "Key": "ManagedBy",
+          "Value": "SecurityTeam"
+        }
+      ],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v3",
+          "IsDefaultVersion": true,
+          "CreateDate": "2024-01-05T14:30:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSAdminActions",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:CreateKey",
+                  "kms:CreateAlias",
+                  "kms:DeleteAlias",
+                  "kms:UpdateAlias",
+                  "kms:EnableKey",
+                  "kms:DisableKey",
+                  "kms:ScheduleKeyDeletion",
+                  "kms:CancelKeyDeletion",
+                  "kms:PutKeyPolicy",
+                  "kms:TagResource",
+                  "kms:UntagResource",
+                  "kms:CreateGrant",
+                  "kms:RevokeGrant",
+                  "kms:ListGrants",
+                  "kms:RetireGrant"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Sid": "KMSReadActions",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:DescribeKey",
+                  "kms:GetKeyPolicy",
+                  "kms:GetKeyRotationStatus",
+                  "kms:ListKeys",
+                  "kms:ListAliases",
+                  "kms:ListResourceTags"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        },
+        {
+          "VersionId": "v2",
+          "IsDefaultVersion": false,
+          "CreateDate": "2023-06-20T09:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSAdminActionsOld",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Create*",
+                  "kms:Delete*",
+                  "kms:Enable*",
+                  "kms:Disable*",
+                  "kms:Schedule*",
+                  "kms:Cancel*",
+                  "kms:Put*",
+                  "kms:Tag*",
+                  "kms:Untag*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        },
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": false,
+          "CreateDate": "2023-01-15T10:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "InitialKMSAdmin",
+                "Effect": "Allow",
+                "Action": "kms:*",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "KMSEncryptDecryptOnly",
+      "PolicyId": "ANPAEXAMPLE2222222222",
+      "Arn": "arn:aws:iam::123456789012:policy/KMSEncryptDecryptOnly",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 2,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Policy allowing only KMS encrypt and decrypt operations",
+      "CreateDate": "2023-03-10T11:00:00Z",
+      "UpdateDate": "2023-03-10T11:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-03-10T11:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSEncryptDecrypt",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Encrypt",
+                  "kms:Decrypt",
+                  "kms:ReEncryptFrom",
+                  "kms:ReEncryptTo",
+                  "kms:GenerateDataKey",
+                  "kms:GenerateDataKeyWithoutPlaintext",
+                  "kms:GenerateDataKeyPair",
+                  "kms:GenerateDataKeyPairWithoutPlaintext"
+                ],
+                "Resource": [
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0",
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-abcdef1234567890a"
+                ]
+              },
+              {
+                "Sid": "KMSDescribe",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:DescribeKey"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "KMSReadOnlyPolicy",
+      "PolicyId": "ANPAEXAMPLE3333333333",
+      "Arn": "arn:aws:iam::123456789012:policy/KMSReadOnlyPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 2,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Read-only access to KMS keys and metadata",
+      "CreateDate": "2023-02-15T09:30:00Z",
+      "UpdateDate": "2023-02-15T09:30:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-02-15T09:30:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSReadOnly",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:DescribeKey",
+                  "kms:GetKeyPolicy",
+                  "kms:GetKeyRotationStatus",
+                  "kms:GetPublicKey",
+                  "kms:ListKeys",
+                  "kms:ListAliases",
+                  "kms:ListKeyPolicies",
+                  "kms:ListResourceTags",
+                  "kms:ListGrants",
+                  "kms:ListRetirableGrants"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "DeveloperPolicy",
+      "PolicyId": "ANPAEXAMPLE4444444444",
+      "Arn": "arn:aws:iam::123456789012:policy/DeveloperPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v2",
+      "AttachmentCount": 3,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Standard developer access policy",
+      "CreateDate": "2022-06-01T08:30:00Z",
+      "UpdateDate": "2023-09-15T10:00:00Z",
+      "Tags": [
+        {
+          "Key": "Team",
+          "Value": "Engineering"
+        }
+      ],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v2",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-09-15T10:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "EC2DeveloperAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "ec2:Describe*",
+                  "ec2:StartInstances",
+                  "ec2:StopInstances",
+                  "ec2:RebootInstances"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "StringEquals": {
+                    "ec2:ResourceTag/Environment": [
+                      "Development",
+                      "Staging"
+                    ]
+                  }
+                }
+              },
+              {
+                "Sid": "LambdaDeveloperAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "lambda:GetFunction",
+                  "lambda:InvokeFunction",
+                  "lambda:ListFunctions",
+                  "lambda:UpdateFunctionCode",
+                  "lambda:UpdateFunctionConfiguration"
+                ],
+                "Resource": "arn:aws:lambda:us-east-1:123456789012:function:dev-*"
+              },
+              {
+                "Sid": "CloudWatchLogs",
+                "Effect": "Allow",
+                "Action": [
+                  "logs:DescribeLogGroups",
+                  "logs:DescribeLogStreams",
+                  "logs:GetLogEvents",
+                  "logs:FilterLogEvents"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Sid": "KMSDecryptForDev",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt",
+                  "kms:GenerateDataKey"
+                ],
+                "Resource": "arn:aws:kms:us-east-1:123456789012:key/mrk-abcdef1234567890a",
+                "Condition": {
+                  "StringEquals": {
+                    "kms:ViaService": "secretsmanager.us-east-1.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": false,
+          "CreateDate": "2022-06-01T08:30:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "InitialDevAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "ec2:Describe*",
+                  "lambda:*",
+                  "logs:*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "S3AdminPolicy",
+      "PolicyId": "ANPAEXAMPLE5555555555",
+      "Arn": "arn:aws:iam::123456789012:policy/S3AdminPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Full administrative access to S3",
+      "CreateDate": "2023-04-20T14:00:00Z",
+      "UpdateDate": "2023-04-20T14:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-04-20T14:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "S3FullAdmin",
+                "Effect": "Allow",
+                "Action": [
+                  "s3:*"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Sid": "S3ObjectLambda",
+                "Effect": "Allow",
+                "Action": [
+                  "s3-object-lambda:*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "EC2FullAccessWithMFA",
+      "PolicyId": "ANPAEXAMPLE6666666666",
+      "Arn": "arn:aws:iam::123456789012:policy/EC2FullAccessWithMFA",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Full EC2 access requiring MFA",
+      "CreateDate": "2023-05-10T11:30:00Z",
+      "UpdateDate": "2023-05-10T11:30:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-05-10T11:30:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "EC2FullAccessMFA",
+                "Effect": "Allow",
+                "Action": "ec2:*",
+                "Resource": "*",
+                "Condition": {
+                  "Bool": {
+                    "aws:MultiFactorAuthPresent": "true"
+                  }
+                }
+              },
+              {
+                "Sid": "EC2ReadNoMFA",
+                "Effect": "Allow",
+                "Action": [
+                  "ec2:Describe*",
+                  "ec2:Get*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "RestrictedRegionPolicy",
+      "PolicyId": "ANPAEXAMPLE7777777777",
+      "Arn": "arn:aws:iam::123456789012:policy/RestrictedRegionPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 0,
+      "PermissionsBoundaryUsageCount": 2,
+      "IsAttachable": true,
+      "Description": "Denies access to non-US regions",
+      "CreateDate": "2023-06-15T09:00:00Z",
+      "UpdateDate": "2023-06-15T09:00:00Z",
+      "Tags": [
+        {
+          "Key": "Purpose",
+          "Value": "Compliance"
+        }
+      ],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-06-15T09:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "DenyNonUSRegions",
+                "Effect": "Deny",
+                "Action": "*",
+                "Resource": "*",
+                "Condition": {
+                  "StringNotEquals": {
+                    "aws:RequestedRegion": [
+                      "us-east-1",
+                      "us-east-2",
+                      "us-west-1",
+                      "us-west-2"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "ConditionalIPBasedAccess",
+      "PolicyId": "ANPAEXAMPLE8888888888",
+      "Arn": "arn:aws:iam::123456789012:policy/ConditionalIPBasedAccess",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Access restricted to corporate IP ranges",
+      "CreateDate": "2023-07-20T15:00:00Z",
+      "UpdateDate": "2023-07-20T15:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-07-20T15:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "AllowFromCorporateIP",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Encrypt",
+                  "kms:Decrypt",
+                  "kms:GenerateDataKey"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "IpAddress": {
+                    "aws:SourceIp": [
+                      "203.0.113.0/24",
+                      "198.51.100.0/24",
+                      "192.0.2.0/24"
+                    ]
+                  }
+                }
+              },
+              {
+                "Sid": "DenyFromNonCorporateIP",
+                "Effect": "Deny",
+                "Action": [
+                  "kms:*"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "NotIpAddress": {
+                    "aws:SourceIp": [
+                      "203.0.113.0/24",
+                      "198.51.100.0/24",
+                      "192.0.2.0/24"
+                    ]
+                  },
+                  "Bool": {
+                    "aws:ViaAWSService": "false"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "SecretsManagerKMSPolicy",
+      "PolicyId": "ANPAEXAMPLE9999999999",
+      "Arn": "arn:aws:iam::123456789012:policy/SecretsManagerKMSPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 2,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Access to Secrets Manager with KMS decryption",
+      "CreateDate": "2023-08-05T10:00:00Z",
+      "UpdateDate": "2023-08-05T10:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-08-05T10:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "SecretsManagerAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue",
+                  "secretsmanager:DescribeSecret",
+                  "secretsmanager:ListSecrets"
+                ],
+                "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:*"
+              },
+              {
+                "Sid": "KMSDecryptForSecrets",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt",
+                  "kms:DescribeKey"
+                ],
+                "Resource": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0",
+                "Condition": {
+                  "StringEquals": {
+                    "kms:ViaService": "secretsmanager.us-east-1.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "DataLakeAccessPolicy",
+      "PolicyId": "ANPAEXAMPLEAAAAAAAAAA",
+      "Arn": "arn:aws:iam::123456789012:policy/DataLakeAccessPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Access to data lake S3 buckets with encryption",
+      "CreateDate": "2023-09-01T12:00:00Z",
+      "UpdateDate": "2023-09-01T12:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-09-01T12:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "S3DataLakeAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:PutObject",
+                  "s3:DeleteObject",
+                  "s3:ListBucket",
+                  "s3:GetBucketLocation"
+                ],
+                "Resource": [
+                  "arn:aws:s3:::company-data-lake",
+                  "arn:aws:s3:::company-data-lake/*",
+                  "arn:aws:s3:::company-analytics-output",
+                  "arn:aws:s3:::company-analytics-output/*"
+                ]
+              },
+              {
+                "Sid": "KMSForDataLake",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Encrypt",
+                  "kms:Decrypt",
+                  "kms:ReEncrypt*",
+                  "kms:GenerateDataKey*",
+                  "kms:DescribeKey"
+                ],
+                "Resource": [
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-1234567890abcdef0",
+                  "arn:aws:kms:us-east-1:123456789012:key/mrk-abcdef1234567890a"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "AssumeRoleForCrossAccount",
+      "PolicyId": "ANPAEXAMPLEBBBBBBBBBB",
+      "Arn": "arn:aws:iam::123456789012:policy/AssumeRoleForCrossAccount",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 2,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "Allows assuming roles in trusted accounts",
+      "CreateDate": "2023-10-10T08:00:00Z",
+      "UpdateDate": "2023-10-10T08:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-10-10T08:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "AssumeRoleTrustedAccounts",
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": [
+                  "arn:aws:iam::987654321098:role/TrustedAuditRole",
+                  "arn:aws:iam::111122223333:role/SharedServicesRole"
+                ],
+                "Condition": {
+                  "Bool": {
+                    "aws:MultiFactorAuthPresent": "true"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "DenyKMSDeletePolicy",
+      "PolicyId": "ANPAEXAMPLECCCCCCCCCC",
+      "Arn": "arn:aws:iam::123456789012:policy/DenyKMSDeletePolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 1,
+      "IsAttachable": true,
+      "Description": "Explicitly denies KMS key deletion actions",
+      "CreateDate": "2023-11-01T09:30:00Z",
+      "UpdateDate": "2023-11-01T09:30:00Z",
+      "Tags": [
+        {
+          "Key": "SecurityControl",
+          "Value": "KeyProtection"
+        }
+      ],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-11-01T09:30:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "DenyKMSKeyDeletion",
+                "Effect": "Deny",
+                "Action": [
+                  "kms:ScheduleKeyDeletion",
+                  "kms:DeleteAlias",
+                  "kms:DeleteImportedKeyMaterial"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "CloudFormationKMSPolicy",
+      "PolicyId": "ANPAEXAMPLEDDDDDDDDDD",
+      "Arn": "arn:aws:iam::123456789012:policy/CloudFormationKMSPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "KMS access for CloudFormation stack operations",
+      "CreateDate": "2023-12-01T11:00:00Z",
+      "UpdateDate": "2023-12-01T11:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2023-12-01T11:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "CFNKMSAccess",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:CreateKey",
+                  "kms:CreateAlias",
+                  "kms:DeleteAlias",
+                  "kms:DescribeKey",
+                  "kms:EnableKeyRotation",
+                  "kms:GetKeyPolicy",
+                  "kms:GetKeyRotationStatus",
+                  "kms:ListAliases",
+                  "kms:ListKeys",
+                  "kms:PutKeyPolicy",
+                  "kms:TagResource",
+                  "kms:UntagResource",
+                  "kms:UpdateAlias",
+                  "kms:ScheduleKeyDeletion"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": [
+                      "cloudformation.amazonaws.com"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "TagBasedKMSAccess",
+      "PolicyId": "ANPAEXAMPLEEEEEEEEEEE",
+      "Arn": "arn:aws:iam::123456789012:policy/TagBasedKMSAccess",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 0,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "KMS access based on resource tags",
+      "CreateDate": "2024-01-05T14:00:00Z",
+      "UpdateDate": "2024-01-05T14:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2024-01-05T14:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSAccessByTag",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Encrypt",
+                  "kms:Decrypt",
+                  "kms:GenerateDataKey*"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "StringEquals": {
+                    "aws:ResourceTag/Team": "${aws:PrincipalTag/Team}"
+                  }
+                }
+              },
+              {
+                "Sid": "KMSListByTag",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:ListKeys",
+                  "kms:ListAliases",
+                  "kms:DescribeKey"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "MultiServiceKMSPolicy",
+      "PolicyId": "ANPAEXAMPLEFFFFFFFFFF",
+      "Arn": "arn:aws:iam::123456789012:policy/MultiServiceKMSPolicy",
+      "Path": "/",
+      "DefaultVersionId": "v1",
+      "AttachmentCount": 1,
+      "PermissionsBoundaryUsageCount": 0,
+      "IsAttachable": true,
+      "Description": "KMS access via multiple AWS services",
+      "CreateDate": "2024-01-10T10:00:00Z",
+      "UpdateDate": "2024-01-10T10:00:00Z",
+      "Tags": [],
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "CreateDate": "2024-01-10T10:00:00Z",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "KMSViaServices",
+                "Effect": "Allow",
+                "Action": [
+                  "kms:Decrypt",
+                  "kms:GenerateDataKey",
+                  "kms:DescribeKey"
+                ],
+                "Resource": "*",
+                "Condition": {
+                  "StringEquals": {
+                    "kms:ViaService": [
+                      "s3.us-east-1.amazonaws.com",
+                      "secretsmanager.us-east-1.amazonaws.com",
+                      "rds.us-east-1.amazonaws.com",
+                      "lambda.us-east-1.amazonaws.com"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "Marker": null,
+  "IsTruncated": false
+}
